@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -29,14 +29,16 @@ namespace SevenDwarfs.Kamishibai
 
         private ScenarioObject scenarioObject = null;
         private int scenarioIndex;
+        private Action onFinishAction;
 
         /// <summary>
         /// シナリオデータの設定
         /// </summary>
         /// <param name="scenarioId"></param>
-        public void Setup(int scenarioId)
+        public void Setup(int scenarioId, Action onFinishAction)
         {
             scenarioIndex = 0;
+            this.onFinishAction = onFinishAction;
 
             // IDからシナリオのScriptableObjectを取得
             string resourceName = string.Format("Assets/SevenDwarfs/Data/Kamishibai/Scenario/Scenario{0}.asset", scenarioId);
@@ -86,6 +88,8 @@ namespace SevenDwarfs.Kamishibai
             scenarioObject = null;
             characterController.Reset();
             gameObject.SetActive(false);
+
+            onFinishAction.Invoke();
         }
     }
 }

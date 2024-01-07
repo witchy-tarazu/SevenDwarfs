@@ -1,0 +1,37 @@
+■必要なPackage
+・Addressables
+・TextMesh Pro
+※UnityPackageを開く前に入れておくことを推奨
+
+■導入後に必要なこと
+以下のフォルダをAddressables指定
+・Assets/SevensDwarfs/Data
+・Assets/SevensDwarfs/Prefabs
+
+■CrossingData
+ゲーム起動中に一時データの保管
+・PermanentData：起動中常に参照するデータ
+・TempoaryData：一度切りの受け渡しに使用するデータ
+
+■ObjectPool
+Unity標準ObjectPoolの簡易版Wrapper
+使うときはオブジェクトをアクティブにして使わなくなったら非アクティブにする動きを既定の動きにしている
+
+■Kamishibai
+画像をパカパカ切り替えるタイプの簡易版ADV機構
+メモリとかロード速度とかは一切気にしていないので気にする場合はちゃんとしたアセットを導入
+・シナリオデータ
+　Assets/SevensDwarfs/Data/Kamishibai/Scenario以下にScenario{適当な数字}.assetの形式でデータを格納
+  ScriptableObjectはCreate->ScriptableObjects->Kamishibai->ScenarioObjectから作成可能
+  ScenarioDataListに1クリックごとのテキストとキャラ指定を記載する
+・立ち絵データ
+　Assets/SevensDwarfs/Data/Kamishibai/Character以下に{キャラクター名:CharacterName}_{表情名:FacialExpress}.pngの形式でデータを格納
+　シナリオデータのCharacterNameとFacialExpressに対応している
+　あまり大きい画像を置くと重いので程々に
+　立ち絵の表示サイズはMAXで600x700、比率を保ったまま高さでShrinkしている
+
+ ■今後の実装予定
+・MasterData：使いづらいけどScriptableObjectでマスターデータ管理できるよくらいの機構
+・Popup：汎用ポップアップダイアログ2サイズくらい
+・SaveData：Serializableなクラスの内容をセーブデータとしてファイルに保存するためだけの機構
+・Sound：SoundSourceをアタッチしなくてもBGMとかSEとか鳴らせるだけのサウンド管理機構

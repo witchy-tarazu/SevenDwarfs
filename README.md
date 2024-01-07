@@ -4,6 +4,10 @@
 ・TextMesh Pro<br>
 ※UnityPackageを開く前に入れておくことを推奨<br>
 <br>
+## 導入手順<br>
+Assets以下を自プロジェクトのAssets以下にコピー<br>
+ないしはUnityPackage以下にあるPackageをImport<br>
+<br>
 ## 導入後に必要なこと<br>
 以下のフォルダをAddressables指定<br>
 ・Assets/SevensDwarfs/Data<br>

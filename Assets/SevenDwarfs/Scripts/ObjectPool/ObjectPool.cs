@@ -52,7 +52,7 @@ namespace SevenDwarfs.ObjectPool
             };
 
             pool = new UnityEngine.Pool.ObjectPool<T>(
-               createFunc: createFunc,
+                createFunc: createFunc,
                 actionOnGet: (got) => { got.gameObject.SetActive(true); },
                 actionOnRelease: (released) => { released.gameObject.SetActive(false); },
                 actionOnDestroy: (destroyed) => { UnityEngine.Object.Destroy(destroyed); },

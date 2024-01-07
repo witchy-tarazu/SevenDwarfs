@@ -14,6 +14,7 @@ Assets以下を自プロジェクトのAssets以下にコピー<br>
 ・Assets/SevensDwarfs/Prefabs<br>
 <br>
 # 機能について
+一通り実装終わったらExample作る予定
 ## CrossingData<br>
 ゲーム起動中に一時データの保管<br>
 ・PermanentData：起動中常に参照するデータ<br>

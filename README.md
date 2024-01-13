@@ -51,8 +51,9 @@ Singleでシーン管理することはないと思うがシーンアンロー�
 ## Popup
 簡単なメッセージ表示用のポップアップダイアログ<br>
 Assets/SevensDwarfs/Prefabs/Popup/PopupCanvas.prefabの各ImageにSpriteを設定して使用<br>
+&emsp;背景画像は400x200、閉じるボタンは100x100で用意<br>
 背景画像はAssets/SevensDwarfs/Data/Popup/以下に置いておけばランタイムでもロード可能<br>
-閉じるボタンはゲーム中に差し替えるケースが少ないためPrefabからのみ設定可能<br>
+&emsp;閉じるボタンはゲーム中に差し替えるケースが少ないためPrefabからのみ設定可能<br>
 
 ## 今後の実装予定
 

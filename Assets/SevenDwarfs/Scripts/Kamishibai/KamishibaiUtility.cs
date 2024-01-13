@@ -1,6 +1,3 @@
-using UnityEngine;
-using UnityEngine.AddressableAssets;
-
 namespace SevenDwarfs.Kamishibai
 {
     public static class KamishibaiUtility
@@ -12,12 +9,7 @@ namespace SevenDwarfs.Kamishibai
         /// <returns></returns>
         public static KamishibaiController LoadKamishibai()
         {
-            var op = Addressables.LoadAssetAsync<GameObject>("Assets/SevenDwarfs/Prefabs/Kamishibai/KamishibaiCanvas.prefab");
-            var prefab = op.WaitForCompletion();
-            Addressables.Release(op);
-
-            var controller = UnityEngine.Object.Instantiate(prefab);
-            return controller.GetComponent<KamishibaiController>();
+            return SevenDwarfsResource.LoadAndInstantiate<KamishibaiController>("Assets/SevenDwarfs/Prefabs/Kamishibai/KamishibaiCanvas.prefab");
         }
     }
 }

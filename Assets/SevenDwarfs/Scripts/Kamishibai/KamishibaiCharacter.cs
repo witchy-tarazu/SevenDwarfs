@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.AddressableAssets;
-using UnityEngine.Assertions;
 
 namespace SevenDwarfs.Kamishibai
 {
@@ -60,11 +58,8 @@ namespace SevenDwarfs.Kamishibai
             string resourceName = string.Format("Assets/SevenDwarfs/Data/Kamishibai/Character/{0}_{1}.png", characterName, scenarioData.facialExpression);
 
             // ロードして設定
-            var op = Addressables.LoadAssetAsync<Sprite>(resourceName);
-            var sprite = op.WaitForCompletion();
-            Assert.IsNotNull(sprite, string.Format("ロードしようとした{0}が見つからないか、データ形式に誤りがあります。:", resourceName));
+            var sprite = SevenDwarfsResource.Load<Sprite>(resourceName);
             image.sprite = sprite;
-            Addressables.Release(op);
 
             image.color = Color.white;
             canvas.sortingOrder = 10001;

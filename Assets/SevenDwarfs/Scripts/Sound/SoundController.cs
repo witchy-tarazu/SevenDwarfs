@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 
 namespace SevenDwarfs.Sound
 {
@@ -39,7 +38,7 @@ namespace SevenDwarfs.Sound
             Resources.UnloadAsset(currentClip);
 
             const string BgmPrefix = SoundPrefix + "BGM/";
-            AudioClip newClip = LoadAuidpClip(BgmPrefix + resourceKey + SoundSuffix);
+            AudioClip newClip = LoadAudioClip(BgmPrefix + resourceKey + SoundSuffix);
             bgmSource.clip = newClip;
             bgmSource.Play();
 
@@ -68,7 +67,7 @@ namespace SevenDwarfs.Sound
             Resources.UnloadAsset(currentClip);
 
             const string SePrefix = SoundPrefix + "SE/";
-            AudioClip newClip = LoadAuidpClip(SePrefix + resourceKey + SoundSuffix);
+            AudioClip newClip = LoadAudioClip(SePrefix + resourceKey + SoundSuffix);
             seSource.clip = newClip;
             seSource.Play();
 
@@ -85,13 +84,9 @@ namespace SevenDwarfs.Sound
         /// </summary>
         /// <param name="resourceKey"></param>
         /// <returns></returns>
-        private AudioClip LoadAuidpClip(string resourceKey)
+        private AudioClip LoadAudioClip(string resourceKey)
         {
-            var op = Addressables.LoadAssetAsync<AudioClip>(resourceKey);
-            var clip = op.WaitForCompletion();
-            Addressables.Release(op);
-
-            return clip;
+            return SevenDwarfsResource.Load<AudioClip>(resourceKey);
         }
     }
 }

@@ -1,6 +1,3 @@
-using UnityEngine;
-using UnityEngine.AddressableAssets;
-
 namespace SevenDwarfs.Sound
 {
     public static class SoundUtility
@@ -12,12 +9,7 @@ namespace SevenDwarfs.Sound
         /// <returns></returns>
         public static SoundController LoadSoundController()
         {
-            var op = Addressables.LoadAssetAsync<GameObject>("Assets/SevenDwarfs/Prefabs/Sound/SoundController.prefab");
-            var prefab = op.WaitForCompletion();
-            Addressables.Release(op);
-
-            var controller = UnityEngine.Object.Instantiate(prefab);
-            return controller.GetComponent<SoundController>();
+            return SevenDwarfsResource.LoadAndInstantiate<SoundController>("Assets/SevenDwarfs/Prefabs/Sound/SoundController.prefab");
         }
     }
 }

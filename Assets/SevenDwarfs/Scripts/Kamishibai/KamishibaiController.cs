@@ -1,8 +1,6 @@
 using System;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.AddressableAssets;
 using TMPro;
+using UnityEngine;
 
 namespace SevenDwarfs.Kamishibai
 {
@@ -44,9 +42,7 @@ namespace SevenDwarfs.Kamishibai
             string resourceName = string.Format("Assets/SevenDwarfs/Data/Kamishibai/Scenario/Scenario{0}.asset", scenarioId);
 
             // ÉçÅ[ÉhÇµÇƒê›íË
-            var op = Addressables.LoadAssetAsync<ScenarioObject>(resourceName);
-            scenarioObject = op.WaitForCompletion();
-            Addressables.Release(op);
+            scenarioObject = SevenDwarfsResource.Load<ScenarioObject>(resourceName);
 
             characterController = new(characterParentTransform);
             textController = new(textMeshPro);

@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using UnityEngine.Assertions;
 using UnityEngine.Pool;
 
@@ -34,9 +33,7 @@ namespace SevenDwarfs.ObjectPool
                     break;
                 case ResouceManagementType.Addressables:
                     {
-                        var op = Addressables.LoadAssetAsync<GameObject>(resourceKey);
-                        originalPrefab = op.WaitForCompletion();
-                        Addressables.Release(op);
+                        originalPrefab = SevenDwarfsResource.Load<GameObject>(resourceKey);
                     }
                     break;
             }

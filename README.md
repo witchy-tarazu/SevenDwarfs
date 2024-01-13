@@ -48,12 +48,12 @@ BGMとSEそれぞれ1枠ずつ再生が可能<br>
 3. ファイル名をstringで指定してPlayBGM()（PlaySE()）を呼び出し
 ファイルの拡張子はSoundController.csを書き換えれば変更可能<br>
 Singleでシーン管理することはないと思うがシーンアンロード時の非破壊対象にする対応は各自でやること<br>
-<br>
 ## Popup
 簡単なメッセージ表示用のポップアップダイアログ<br>
 Assets/SevensDwarfs/Prefabs/Popup/PopupCanvas.prefabの各ImageにSpriteを設定して使用<br>
 背景画像はAssets/SevensDwarfs/Data/Popup/以下に置いておけばランタイムでもロード可能<br>
 閉じるボタンはゲーム中に差し替えるケースが少ないためPrefabからのみ設定可能<br>
+
 ## 今後の実装予定
 
 #### MasterData：使いづらいけどScriptableObjectでマスターデータ管理できるよくらいの機構

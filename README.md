@@ -36,9 +36,17 @@ Unity標準ObjectPoolの簡易版Wrapper<br>
 &emsp;シナリオデータのCharacterNameとFacialExpressに対応している<br>
 &emsp;あまり大きい画像を置くと重いので程々に<br>
 &emsp;立ち絵の表示サイズはMAXで600x700、比率を保ったまま高さでShrinkしている<br>
+## Sound<br>
+簡易版サウンド再生機構<br>
+BGMとSEそれぞれ1枠ずつ再生が可能<br>
+再生手順は下記<br>
+1. Assets/SevensDwarfs/Data/Sound/BGM（SE）にmp3を配置しておく<br>
+2. SoundController.prefabをシーンに配置（SoundUtility.LoadSoundController()から呼んでもOK）
+3. ファイル名をstringで指定してPlayBGM()（PlaySE()）を呼び出し
+ファイルの拡張子はSoundController.csを書き換えれば変更可能<br>
+Singleでシーン管理することはないと思うがシーンアンロード時の非破壊対象にする対応は各自でやること<br>
 <br>
 ## 今後の実装予定<br>
 #### MasterData：使いづらいけどScriptableObjectでマスターデータ管理できるよくらいの機構<br>
 #### Popup：汎用ポップアップダイアログ2サイズくらい<br>
 #### SaveData：Serializableなクラスの内容をセーブデータとしてファイルに保存するためだけの機構<br>
-#### Sound：SoundSourceをアタッチしなくてもBGMとかSEとか鳴らせるだけのサウンド管理機構<br>

@@ -70,7 +70,7 @@ namespace SevenDwarfs.MasterData
         /// </summary>
         public override MasterRecordBase GetRecord()
         {{
-            return record;
+            return record.SharrowCopy();
         }}
     }}
 }}

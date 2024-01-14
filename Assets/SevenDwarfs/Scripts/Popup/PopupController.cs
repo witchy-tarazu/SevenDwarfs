@@ -44,7 +44,7 @@ namespace SevenDwarfs.Popup
         /// <param name="onCloseAction"></param>
         public void Open(string text, string bgSpritePath, Action onCloseAction)
         {
-            backgroundImage.sprite = SevenDwarfsResource.Load<Sprite>(bgSpritePath);
+            backgroundImage.sprite = SevenDwarfsResource.Load<Sprite>(string.Format("Assets/SevenDwarfs/Data/Popup/{0}.png", bgSpritePath));
             Open(text, onCloseAction);
         }
 

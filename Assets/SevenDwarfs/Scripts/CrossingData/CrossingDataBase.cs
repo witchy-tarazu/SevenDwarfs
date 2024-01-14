@@ -7,11 +7,11 @@ namespace SevenDwarfs.CrossingData
         /// </summary>
         public virtual void Unload()
         {
-            var types = GetType().GetFields();
-            foreach (var type in types)
+            var fields = GetType().GetFields();
+            foreach (var field in fields)
             {
-                var n = type.Name;
-                type.SetValue(n, default);
+                var n = field.Name;
+                field.SetValue(n, default);
             }
         }
     }

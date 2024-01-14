@@ -71,12 +71,12 @@ ScriptableObject形式のマスターデータ機構<br>
 6. Unity上部のメニューバーからSevenDwarfs->Compress MasterDataを実行して実際に使用するデータを出力<br>
 7. MasterDataManagerクラスを使用してマスターデータを取得<br>
 
-Editorからエクセル感覚で触るのは非エンジニアがつらい、<br>
-量産したScriptableObjectをランタイムで全部拾ってくるのは処理がつらい、<br>
+Editorからエクセル感覚で触るのは非エンジニアがつらい，<br>
+量産したScriptableObjectをランタイムで全部拾ってくるのは処理がつらい，<br>
 という思想で元データと出力データの関係性は意図的に切っている<br>
 SharrowCopyしてるだけなので参照型を組み込まれるとダメ<br>
 
-## 今後の実装予定
-
-#### SaveData：Serializableなクラスの内容をセーブデータとしてファイルに保存するためだけの機構
-
+## SaveData
+インスタンスをjsonにしてbyte列にして暗号化して保存して，<br>
+読み込んで復号して元のインスタンスに戻す機構<br>
+JsonUtilityで取り扱えないクラスのインスタンスは対応していない<br>

@@ -27,6 +27,8 @@ namespace SevenDwarfs
             CreateDirectory("Assets/SevenDwarfs/Editor/MasterData/Data");
 
             CreateDirectory("Assets/SevenDwarfs/Scripts/MasterData/RecordClasses");
+
+            AssetDatabase.Refresh();
         }
 
         /// <summary>

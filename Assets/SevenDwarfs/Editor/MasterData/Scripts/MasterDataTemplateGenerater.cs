@@ -144,6 +144,12 @@ namespace SevenDwarfs.MasterData
                 createText += string.Format(CompressorEachClassTemplate, className);
             }
 
+            var compressorDirectoryPath = "Assets/SevenDwarfs/Editor/MasterData/Scripts/Generated";
+            if (!Directory.Exists(compressorDirectoryPath))
+            {
+                Directory.CreateDirectory(compressorDirectoryPath);
+            }
+
             var compressorPath = string.Format("Assets/SevenDwarfs/Editor/MasterData/Scripts/Generated/GeneratedMasterDataCompressor.cs");
             var oldFile = AssetDatabase.LoadAssetAtPath<Object>(compressorPath);
             if (oldFile != null)

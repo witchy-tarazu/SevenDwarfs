@@ -1,24 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Assertions;
-using System;
 using UnityEditor;
+using UnityEngine;
 
 namespace SevenDwarfs.MasterData
 {
-    public class MasterDataCompressor
+    public static partial class MasterDataCompressor
     {
-        /// <summary>
-        /// マスターデータ圧縮
-        /// </summary>
-        [MenuItem("SevenDwarfs/Compress MasterData")]
-        private static void CompressMasterData()
-        {
-            // Example:
-            // CreateMasterDataObject<MasterHoge, MasterHogeRecordObject>();
-        }
-
         /// <summary>
         /// 任意のマスターデータの圧縮処理
         /// </summary>

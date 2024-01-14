@@ -18,6 +18,7 @@ Assets以下を自プロジェクトのAssets以下にコピー<br>
 以下のフォルダをAddressables指定<br>
 ・Assets/SevensDwarfs/Data<br>
 ・Assets/SevensDwarfs/Prefabs<br>
+メニューバーからSevenDwarfs->Prepare Empty Directoriesを実行
 <br>
 # 機能について
 一通り実装終わったらExample作る予定

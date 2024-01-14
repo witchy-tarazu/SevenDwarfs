@@ -70,22 +70,47 @@ namespace SevenDwarfs.MasterData
         /// </summary>
         public override MasterRecordBase GetRecord()
         {{
-            return record;
+            return record.SharrowCopy();
+        }}
+    }}
+}}
+";
+        private const string CompressorTemplete = @"/// AUTO GENERATED ///
+using UnityEditor;
+
+namespace SevenDwarfs.MasterData
+{{
+    public static partial class MasterDataCompressor
+    {{
+        /// <summary>
+        /// マスターデータ圧縮
+        /// </summary>
+        [MenuItem(""SevenDwarfs/Compress MasterData"")]
+        private static void CompressMasterData()
+        {{
+{0}
         }}
     }}
 }}
 ";
 
         /// <summary>
+        /// Compressorでのファイル定義
+        /// </summary>
+        private const string CompressorEachClassTemplate = "            CreateMasterDataObject<Master{0}, Master{0}RecordObject>();";
+
+
+        /// <summary>
         /// マスターデータクラスの出力
         /// </summary>
-        [MenuItem("SevenDwarfs/Generate MasterData Scrips")]
+        [MenuItem("SevenDwarfs/Generate MasterData Scripts")]
         public static void GenerateMasterDataScripts()
         {
             DirectoryInfo directoryInfo = new("Assets/SevenDwarfs/Scripts/MasterData/RecordClasses");
             var classNames = directoryInfo.GetFiles("*.cs")
                 .Select(fileInfo => fileInfo.Name.Split(".")[0]);
 
+            string createText = string.Empty;
             foreach (var className in classNames)
             {
                 var generatedDirectoryPath = "Assets/SevenDwarfs/Scripts/MasterData/Generated";
@@ -115,7 +140,17 @@ namespace SevenDwarfs.MasterData
                 {
                     Directory.CreateDirectory(dataDirectoryPath);
                 }
+
+                createText += string.Format(CompressorEachClassTemplate, className);
             }
+
+            var compressorPath = string.Format("Assets/SevenDwarfs/Editor/MasterData/Scripts/Generated/GeneratedMasterDataCompressor.cs");
+            var oldFile = AssetDatabase.LoadAssetAtPath<Object>(compressorPath);
+            if (oldFile != null)
+            {
+                AssetDatabase.DeleteAsset(compressorPath);
+            }
+            File.WriteAllText(compressorPath, string.Format(CompressorTemplete, createText));
 
             AssetDatabase.Refresh();
         }

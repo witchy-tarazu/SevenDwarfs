@@ -1,6 +1,9 @@
 # 用途
 unity1week等のゲームジャムでそこそこ使うだろう簡易機能の寄せ集め<br>
 「作ろうと思えばすぐ作れるけど毎回作るのもなぁ…」というときにどうぞ<br>
+<br>
+あくまで短期間でのゲーム制作に注力するための補助なので<br>
+ちゃんと作りこむ場合にはちゃんとしたライブラリやアセットを使用すること<br>
 # 導入について
 ## 必要なPackage
 ・Addressables<br>
@@ -46,6 +49,7 @@ BGMとSEそれぞれ1枠ずつ再生が可能<br>
 1. Assets/SevensDwarfs/Data/Sound/BGM（SE）にmp3を配置しておく<br>
 2. SoundController.prefabをシーンに配置（SoundUtility.LoadSoundController()から呼んでもOK）
 3. ファイル名をstringで指定してPlayBGM()（PlaySE()）を呼び出し
+
 ファイルの拡張子はSoundController.csを書き換えれば変更可能<br>
 Singleでシーン管理することはないと思うがシーンアンロード時の非破壊対象にする対応は各自でやること<br>
 ## Popup
@@ -54,10 +58,23 @@ Assets/SevensDwarfs/Prefabs/Popup/PopupCanvas.prefabの各ImageにSpriteを設�
 &emsp;背景画像は400x200、閉じるボタンは100x100で用意<br>
 背景画像はAssets/SevensDwarfs/Data/Popup/以下に置いておけばランタイムでもロード可能<br>
 &emsp;閉じるボタンはゲーム中に差し替えるケースが少ないためPrefabからのみ設定可能<br>
+## MasterData
+ScriptableObject形式のマスターデータ機構<br>
+ちゃんとしたマスターデータ機構を導入できる余裕があるならこちらは使わずそちらを優先すべき<br>
+作成・利用手順は下記<br>
+1. Assets/SevensDwarfs/Scripts/MasterData/RecordClassesにMasterRecordBaseを継承したSerializableクラスを定義<br>
+2. Unity上部のメニューバーからSevenDwarfs->Generate MasterData Scriptsを実行して関連クラスを自動生成<br>
+3. CreateAssetメニューのSevenDwarfs->MasterDataに追加したSerializableクラスと同名の項目が増えてるので作成<br>
+4. 手順3で作成したファイルをAssets/SevensDwarfs/Editor/MasterData/Data/{クラス名}ができているのでその下に配置<br>
+5. 1レコードにつき1Scriptableの要領で量産<br>
+6. Unity上部のメニューバーからSevenDwarfs->Compress MasterDataを実行して実際に使用するデータを出力<br>
+7. MasterDataManagerクラスを使用してマスターデータを取得<br>
+
+Editorからエクセル感覚で触るのは非エンジニアがつらい、<br>
+量産したScriptableObjectをランタイムで全部拾ってくるのは処理がつらい、<br>
+という思想で元データと出力データの関係性は意図的に切っている<br>
 
 ## 今後の実装予定
-
-#### MasterData：使いづらいけどScriptableObjectでマスターデータ管理できるよくらいの機構
 
 #### SaveData：Serializableなクラスの内容をセーブデータとしてファイルに保存するためだけの機構
 

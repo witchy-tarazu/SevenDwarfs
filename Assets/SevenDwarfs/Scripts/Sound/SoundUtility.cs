@@ -1,3 +1,4 @@
+using UnityEngine;
 namespace SevenDwarfs.Sound
 {
     public static class SoundUtility
@@ -7,9 +8,9 @@ namespace SevenDwarfs.Sound
         /// 重複チェックをしないのと、AudioListenerはMainCameraあたりが持っている想定になっているので注意
         /// </summary>
         /// <returns></returns>
-        public static SoundController LoadSoundController()
+        public static SoundController LoadSoundController(Transform parent)
         {
-            return SevenDwarfsResource.LoadAndInstantiate<SoundController>("Assets/SevenDwarfs/Prefabs/Sound/SoundController.prefab");
+            return SevenDwarfsResource.LoadAndInstantiate<SoundController>(parent, "Assets/SevenDwarfs/Prefabs/Sound/SoundController.prefab");
         }
     }
 }

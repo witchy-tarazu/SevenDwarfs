@@ -1,3 +1,4 @@
+using UnityEngine;
 namespace SevenDwarfs.Kamishibai
 {
     public static class KamishibaiUtility
@@ -7,9 +8,11 @@ namespace SevenDwarfs.Kamishibai
         /// EventSystemÇ™Ç»Ç¢Ç∆ìÆÇ©Ç»Ç¢ÇÃÇ≈íçà”
         /// </summary>
         /// <returns></returns>
-        public static KamishibaiController LoadKamishibai()
+        public static KamishibaiController LoadKamishibai(Transform parent)
         {
-            return SevenDwarfsResource.LoadAndInstantiate<KamishibaiController>("Assets/SevenDwarfs/Prefabs/Kamishibai/KamishibaiCanvas.prefab");
+            var kamishibai = SevenDwarfsResource.LoadAndInstantiate<KamishibaiController>(parent, "Assets/SevenDwarfs/Prefabs/Kamishibai/KamishibaiCanvas.prefab");
+            kamishibai.Hide();
+            return kamishibai;
         }
     }
 }

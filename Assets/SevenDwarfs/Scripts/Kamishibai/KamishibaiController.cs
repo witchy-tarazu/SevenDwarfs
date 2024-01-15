@@ -30,6 +30,15 @@ namespace SevenDwarfs.Kamishibai
         private Action onFinishAction;
 
         /// <summary>
+        /// 自身を非表示にする
+        /// 最初に自身を非アクティブにしておくため
+        /// </summary>
+        public void Hide()
+        {
+            gameObject.SetActive(false);
+        }
+
+        /// <summary>
         /// シナリオデータの設定
         /// </summary>
         /// <param name="scenarioId"></param>

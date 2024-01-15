@@ -27,8 +27,9 @@ namespace SevenDwarfs.Popup
         /// <summary>
         /// äJÇ≠èàóù
         /// </summary>
+        /// <param name="text"></param>
         /// <param name="onCloseAction"></param>
-        public void Open(string text, Action onCloseAction)
+        public void Open(string text, Action onCloseAction = null)
         {
             textMesh.text = text;
             this.onCloseAction = onCloseAction;

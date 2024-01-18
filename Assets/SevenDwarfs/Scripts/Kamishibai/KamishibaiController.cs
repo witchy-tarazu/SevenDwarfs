@@ -28,6 +28,7 @@ namespace SevenDwarfs.Kamishibai
         private ScenarioObject scenarioObject = null;
         private int scenarioIndex;
         private Action onFinishAction;
+        private Action onClickAction;
 
         /// <summary>
         /// 自身を非表示にする
@@ -42,10 +43,13 @@ namespace SevenDwarfs.Kamishibai
         /// シナリオデータの設定
         /// </summary>
         /// <param name="scenarioId"></param>
-        public void Setup(int scenarioId, Action onFinishAction)
+        /// <param name="onFinishAction"></param>
+        /// <param name="onClickAction"></param>
+        public void Setup(int scenarioId, Action onFinishAction = null, Action onClickAction = null)
         {
             scenarioIndex = 0;
             this.onFinishAction = onFinishAction;
+            this.onClickAction = onClickAction;
 
             // IDからシナリオのScriptableObjectを取得
             string resourceName = string.Format("Assets/SevenDwarfs/Data/Kamishibai/Scenario/Scenario{0}.asset", scenarioId);
@@ -55,7 +59,8 @@ namespace SevenDwarfs.Kamishibai
 
             characterController = new(characterParentTransform);
             textController = new(textMeshPro);
-            OnClick();
+
+            ReadScenario();
             gameObject.SetActive(true);
         }
 
@@ -66,8 +71,8 @@ namespace SevenDwarfs.Kamishibai
                 return;
             }
 
+            onClickAction?.Invoke();
             ReadScenario();
-            scenarioIndex++;
         }
 
         private void ReadScenario()
@@ -82,6 +87,7 @@ namespace SevenDwarfs.Kamishibai
             var scenarioData = scenarioObject.scenarioDataList[scenarioIndex];
             characterController.ReadScenario(scenarioData);
             textController.ReadScenario(scenarioData);
+            scenarioIndex++;
         }
 
         /// <summary>
@@ -94,7 +100,7 @@ namespace SevenDwarfs.Kamishibai
             characterController.Reset();
             gameObject.SetActive(false);
 
-            onFinishAction.Invoke();
+            onFinishAction?.Invoke();
         }
     }
 }

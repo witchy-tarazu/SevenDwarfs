@@ -63,7 +63,7 @@ namespace SevenDwarfs.Popup
         /// </summary>
         public void OnClose()
         {
-            onCloseAction.Invoke();
+            onCloseAction?.Invoke();
         }
     }
 }

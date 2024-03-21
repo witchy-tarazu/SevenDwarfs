@@ -17,7 +17,9 @@ namespace SevenDwarfs
             var op = Addressables.LoadAssetAsync<T>(path);
             var asset = op.WaitForCompletion();
             Assert.IsNotNull(asset, string.Format("ロードしようとした{0}が見つからないか、データ形式に誤りがあります。:", path));
-            Addressables.Release(op);
+            
+            // TODO: 監視してなくなった削除するようにする
+            // Addressables.Release(op);
 
             return asset;
         }
